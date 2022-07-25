@@ -8,8 +8,6 @@ path = input('Path:')
 
 if not path:
     path = './'
-else:
-    path = path.replace('\\', '')
 
 print(path)
 
