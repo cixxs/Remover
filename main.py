@@ -1,4 +1,4 @@
-import os
+import os, sys
 
 # 切换工作目录
 config_path = '/'.join((sys.argv[0].replace('\\', '/')).split('/')[:-1])
@@ -14,10 +14,14 @@ path = input('Path:')
 
 if not path:
     path = './'
+else:
+    path = path.replace('\\', '')
+
+print(path)
 
 movie_extension = ["mp4", "avi", "rmvb", "wmv", "mov", "mkv", "flv", "ts", "webm", "mpeg", "mpg", "vob"]
 
-for folderName, folders, files in os.walk('./'):
+for folderName, folders, files in os.walk(path):
     for file in files:
         filename = os.path.splitext(file)[0]
         suffix = os.path.splitext(file)[1].replace('.', '')
