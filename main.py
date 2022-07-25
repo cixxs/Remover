@@ -1,11 +1,5 @@
 import os, sys
 
-# 切换工作目录
-config_path = '/'.join((sys.argv[0].replace('\\', '/')).split('/')[:-1])
-work_path = os.getcwd().replace('\\', '/')
-if work_path != config_path:
-    os.chdir(config_path)
-
 print('==========================================')
 print('REMOVE all photos with same name as movies')
 print('==========================================')
