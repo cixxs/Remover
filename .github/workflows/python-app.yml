@@ -30,9 +30,9 @@ jobs:
         pip install pyinstaller
     - name: pyinstaller
       run: |
-        pyinstaller -F Main.py
+        pyinstaller -F main.py
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v1
       with:
-        name: PickPic-${{ matrix.os }}
+        name: Remover-${{ matrix.os }}
         path: dist
