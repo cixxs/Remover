@@ -20,11 +20,13 @@ for folderName, folders, files in os.walk(path):
 
         for suffix in movie_extension:
             if suffix in file:
-                print('Found:', file)
                 filename = os.path.splitext(file)[0]
                 if os.path.exists(os.path.join(folderName, filename + '.jpg')):
+                    print('Found:', file, 'and', filename + '.jpg, ', end='')
                     os.remove(os.path.join(folderName, filename + '.jpg'))
                     print('Del:', filename + '.jpg')
+                else:
+                    print('Found:', file)
 
         #if suffix in movie_extension:
                 #    try:
