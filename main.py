@@ -8,16 +8,18 @@ path = input('Path:')
 
 if not path:
     path = './'
+else:
+    path = path.replace('\\','')
 path = os.path.normpath(path)
 print(path)
 
 movie_extension = [".mp4", ".avi", ".rmvb", ".wmv", ".mov", ".mkv", ".flv", ".ts", ".webm", ".mpeg", ".mpg", ".vob"]
 
 for folderName, folders, files in os.walk(path):
+    print(folders, files)
     for file in files:
         #filename = os.path.splitext(file)[0]
         #suffix = os.path.splitext(file)[1].replace('.', '')
-
         for suffix in movie_extension:
             if suffix in file:
                 filename = os.path.splitext(file)[0]
