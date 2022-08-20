@@ -1,5 +1,6 @@
 import os
 import shutil
+import sys
 
 print('============================================')
 print('COPY&RENAME all photos in Extras and Gallery')
@@ -45,7 +46,8 @@ for folderName, folders, files in os.walk(path):
                     print('Error:', file_path, e)
             print('==========================================')
 print('Done!')
-
+if sys.platform() == 'win32':
+    os.system("pause")
 """    
     for file in files:
         #filename = os.path.splitext(file)[0]

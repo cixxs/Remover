@@ -6,9 +6,7 @@ name: Python application
 on:
   workflow_dispatch:
   push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
 
 permissions:
   contents: read
@@ -24,7 +22,7 @@ jobs:
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:
-        python-version: "3.10"
+        python-version: "3.9"
     - name: Install dependencies
       run: |
         pip install pyinstaller
@@ -34,5 +32,5 @@ jobs:
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v1
       with:
-        name: Remover-${{ matrix.os }}
+        name: ${{ matrix.os }}
         path: dist
