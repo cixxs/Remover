@@ -20,11 +20,27 @@ def choose_directory():
 print('============================================')
 print('COPY&RENAME all photos in Extras and Gallery')
 print('============================================')
-print('Move this app to target directory or input full path under here, and press Enter to start.')
 path = choose_directory()
 
 #path = os.path.normpath(path)
 print(path)
+print('==========================================')
+print('1. Extras')
+print('2. Gallery')
+print('3. Extras & Gallery')
+got_input = input('Choose processing range: ')
+if got_input == "1":
+    extras_mark = True
+    gallery_mark = False
+elif got_input == "2":
+    extras_mark = False
+    gallery_mark = True
+elif got_input == "3":
+    extras_mark = True
+    gallery_mark = True
+else:
+    print('Wrong range')
+    sys.exit(1)
 print('==========================================')
 movie_extension = [".mp4", ".avi", ".rmvb", ".wmv", ".mov", ".mkv", ".flv", ".ts", ".webm", ".mpeg", ".mpg", ".vob"]
 pic_extension = [".jpg", ".png", ".jpeg"]
@@ -33,7 +49,7 @@ for folderName, folders, files in os.walk(path):
     # print(folders, files)
     # 搜索所有符合条件的根目录
     for folder in folders:
-        if folder == 'Extras' or folder == 'Gallery' or 'Gallery' in folderName:
+        if (extras_mark and folder == 'Extras') or (gallery_mark and (folder == 'Gallery' or 'Gallery' in folderName)):
             print('Loading:', os.path.join(folderName, folder))
             # 列出子目录文件
             proc_dir = os.path.join(folderName, folder)
